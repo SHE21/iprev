@@ -55,7 +55,6 @@ class SolicitacaoSerializer(serializers.ModelSerializer):
 
 
 
-
 class UserSerializer(serializers.ModelSerializer):
 	endereco = EnderecoSerializer()
 	contato = ContatoSerializer()
