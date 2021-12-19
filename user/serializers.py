@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, authenticate
 
 from rest_framework import serializers
 
-from .models import Endereco, Contato, Documento, Solicitacao
+from .models import Endereco, Contato, Documento
 
 
 class ContatoSerializer(serializers.ModelSerializer):
@@ -28,7 +28,8 @@ class EnderecoSerializer(serializers.ModelSerializer):
 		)
 
 
-class DocumentosSerializer(serializers.ModelSerializer):
+
+class DocumentoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Documento
 		fields = (
@@ -39,26 +40,10 @@ class DocumentosSerializer(serializers.ModelSerializer):
 
 
 
-class SolicitacaoSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Solicitacao
-		fields = (
-			'tipoSolicitacao',
-			'data',
-			'status',
-			'deferida'
-		)
-
-
-	def create(self, validated_data):
-		return Solicitacao.objects.create(user=user, **validated_data)
-
-
-
 class UserSerializer(serializers.ModelSerializer):
 	endereco = EnderecoSerializer()
 	contato = ContatoSerializer()
-	documento = DocumentosSerializer(many=False)
+	documento = DocumentoSerializer()
 
 	class Meta:
 		model = get_user_model()
@@ -80,7 +65,7 @@ class UserSerializer(serializers.ModelSerializer):
 			'foto',
 			'endereco',
 			'contato',
-			'documento'
+			'documento',
 		)
 
 
@@ -93,8 +78,10 @@ class UserSerializer(serializers.ModelSerializer):
 		Endereco.objects.create(user=user, **endereco_data)
 		Contato.objects.create(user=user, **contato_data)
 
-		for documento_data in documentos_data:
-			Documento.objects.create(user=user, **documento_data)
+		Documento.objects.create(user=user, **documentos_data)
+
+		"""for documento_data in documentos_data:
+			Documento.objects.create(user=user, **documento_data)"""
 
 		return user
 
@@ -119,7 +106,7 @@ class AuthTokenSerializer(serializers.Serializer):
 	)
 
 	def validate(self, attrs):
-	 	email = attrs.get('email')
+	 	#email = attrs.get('email')
 	 	cpf = attrs.get('cpf')
 	 	password = attrs.get('password')
 

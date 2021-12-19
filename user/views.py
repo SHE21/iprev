@@ -3,18 +3,12 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 
 
-from .serializers import UserSerializer, SolicitacaoSerializer, AuthTokenSerializer
+from .serializers import UserSerializer, AuthTokenSerializer
 
 
 class CreateUserView(generics.CreateAPIView):
 	""" Criar um novo usuario no sistema"""
 	serializer_class = UserSerializer
-
-
-class CreateSolicitacao(generics.CreateAPIView):
-	serializer_class = SolicitacaoSerializer
-	authentication_classes = (authentication.TokenAuthentication,)
-	permissions_classes = (permissions.IsAuthenticated,)
 
 
 class CreateTokenView(ObtainAuthToken):
