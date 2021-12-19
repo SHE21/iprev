@@ -1,0 +1,33 @@
+{
+    "email":"mariano@gmail.com",
+    "password": "shekespeare25",
+    "nome": "Mariano de Souza",
+    "genero": "M",
+    "cpf": "05385733469",
+    "rg": "4509356834",
+    "cnh": "598769",
+    "pis_pasep": "9856349",
+    "dataNascimento": "2021-12-15",
+    "eleitorNumero": "4375385",
+    "nomeMae": "Maria Sousa",
+    "nomePai": "Romário de Jesus",
+    "naturalidade": "São Luis",
+    "cargo": "Técnico em Radiologia",
+    "foto": "http://127.0.0.1:8000/user_foto/dc87fa235c033429e09459db2b667b0906873a394194935bd3878d6f13f1198d_full.jpg",
+    "endereco": {
+        "estado": "Maranhão",
+        "cidade": "São José de Ribamar",
+        "numero": "10",
+        "rua": "João Martella",
+        "bairro": "Piçarreira",
+        "complemento": "proximo ao posto maracajá",
+        "cep": "65110000"
+    },
+     "contato": {
+        "telefone": "98985232177",
+        "celular": "98985232177"
+    },
+    "documento": [
+         {"upload": "http://127.0.0.1:8000/user_foto/dc87fa235c033429e09459db2b667b0906873a394194935bd3878d6f13f1198d_full.jpg", "nome": "carteira_de_trabalho","tipo": "Carteira de Trabalho"}
+    ]
+}
