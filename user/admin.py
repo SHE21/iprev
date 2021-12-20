@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from user import models
+from user import models as models_user
+from solicitacao import models as models_solicitacao
 
 class UserAdmin(BaseUserAdmin):
 	ordering = ['id']
@@ -53,4 +54,5 @@ class UserAdmin(BaseUserAdmin):
 	)
 
 
-admin.site.register(models.User, UserAdmin)
+admin.site.register(models_user.User, UserAdmin)
+admin.site.register(models_solicitacao.Solicitacao)

@@ -1,17 +1,31 @@
 from rest_framework import serializers
-from .models import Solicitacao
+from .models import Solicitacao, DocumentoSolicitacao
 from django.conf import settings
 
-class SolicitacaoSerializer(serializers.ModelSerializer):
+
+
+class DocumentoSolicitacaoSerializer(serializers.ModelSerializer):
+
 	class Meta:
-		model = Solicitacao
+		model = DocumentoSolicitacao
 		fields = (
-			'tipoSolicitacao',
-			'data',
-			'status',
-			'deferida'
+			'upload',
+			'nome',
+			'tipo'
 		)
 
 
-	def create(self, validated_data):
-		return Solicitacao.objects.create(user=self.get_object(), **validated_data)
+
+class SolicitacaoSerializer(serializers.ModelSerializer):
+	documento = DocumentoSolicitacaoSerializer(many=True)
+
+	class Meta:
+		model = Solicitacao
+		fields = (
+			#'user',
+			'tipoSolicitacao',
+			'data',
+			'status',
+			'deferida',
+			'documento'
+		)

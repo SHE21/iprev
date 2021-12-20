@@ -1,9 +1,15 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
 from solicitacao import views
+
+
+router = DefaultRouter()
+router.register('create', views.CreateSolicitacao)
+
 
 app_name = 'solicitacao'
 
 urlpatterns = [
-	path('create/', views.CreateSolicitacao.as_view(), name="create")
+	path('', include(router.urls))
 ]

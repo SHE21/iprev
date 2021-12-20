@@ -91,3 +91,13 @@ class Documento(models.Model):
 
 	def __str__(self):
 		return self.nome
+
+
+class Ingredient(models.Model):
+	name = models.CharField('nome', max_length=255)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+
+	def __srt__(self):
+		return self.name
+

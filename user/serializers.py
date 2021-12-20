@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, authenticate
 
 from rest_framework import serializers
 
-from .models import Endereco, Contato, Documento
+from .models import Endereco, Contato, Documento, Ingredient
 
 
 class ContatoSerializer(serializers.ModelSerializer):
@@ -122,3 +122,11 @@ class AuthTokenSerializer(serializers.Serializer):
 
 	 	attrs['user'] = user
 	 	return attrs
+
+
+class IngredientSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Ingredient
+		fields = ('id,', 'name')
+		read_only_fields = ('id')
