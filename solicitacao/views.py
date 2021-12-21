@@ -1,4 +1,5 @@
 from rest_framework.generics import mixins
+from rest_framework import generics
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -33,3 +34,10 @@ class CreateSolicitacao(viewsets.GenericViewSet,
 	"""def create(self, validated_data):
 		solicitacao = Solicitacao.objects.create(user=self.request.user, **validated_data)
 		return solicitacao"""
+
+
+class ManagerSolicitacao(viewsets.ViewSet):
+	queryset = Solicitacao.objects.all()
+	serializer_class = SolicitacaoSerializer
+	authentication_classes = (TokenAuthentication,)
+	permission_classes = (IsAuthenticated,)
