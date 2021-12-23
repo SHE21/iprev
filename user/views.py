@@ -1,6 +1,7 @@
 from rest_framework import generics, authentication, permissions
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
+from rest_framework.parsers import FormParser, MultiPartParser
 
 
 from .serializers import UserSerializer, AuthTokenSerializer
@@ -9,6 +10,7 @@ from .serializers import UserSerializer, AuthTokenSerializer
 class CreateUserView(generics.CreateAPIView):
 	""" Criar um novo usuario no sistema"""
 	serializer_class = UserSerializer
+	#parser_classes = (MultiPartParser, FormParser,)
 
 
 class CreateTokenView(ObtainAuthToken):

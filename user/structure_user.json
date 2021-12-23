@@ -3,7 +3,7 @@
     "password": "shekespeare20",
     "nome": "Mariano de Souza",
     "genero": "M",
-    "cpf": "004.985.682-09",
+    "cpf": "004.985.682-69",
     "rg": "4509356834",
     "cnh": "598769",
     "pis_pasep": "9856349",
@@ -13,7 +13,7 @@
     "nomePai": "Romário de Jesus",
     "naturalidade": "São Luis",
     "cargo": "Técnico em Radiologia",
-    "foto": "http://127.0.0.1:8000/user_foto/dc87fa235c033429e09459db2b667b0906873a394194935bd3878d6f13f1198d_full.jpg",
+    "foto": "file://D:/UNDB/SOFTHOUSE/MODULOS.png",
     "endereco": {
         "estado": "Maranhão",
         "cidade": "São José de Ribamar",
@@ -28,6 +28,7 @@
         "celular": "98985232177"
     },
     "documento": [
-         {"upload": "http://127.0.0.1:8000/user_foto/dc87fa235c033429e09459db2b667b0906873a394194935bd3878d6f13f1198d_full.jpg", "nome": "carteira_de_trabalho","tipo": "Carteira de Trabalho"}
-    ]
+        {"upload": "file://C:/Users/SANTIAGO/Documents/Relatorio.pdf", "nome": "carteira_de_trabalho","tipo": "Carteira de Trabalho"},
+        {"upload": "file://C:/Users/SANTIAGO/Documents/Relatorio.pdf", "nome": "carteira_de_trabalho","tipo": "Carteira de Trabalho"}
+     ]
 }

@@ -13,6 +13,14 @@ class ContatoSerializer(serializers.ModelSerializer):
 			'celular'
 		)
 
+	def update(self, instance, validated_data):
+		contato = Contato.objects.get(user_id = instance)
+		contato.telefone = validated_data['telefone']
+		contato.celular = validated_data['celular']
+		contato.save()
+
+		return contato
+
 
 class EnderecoSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -27,6 +35,18 @@ class EnderecoSerializer(serializers.ModelSerializer):
 			'cep'
 		)
 
+	def update(self, instance, validated_data):
+		endereco = Endereco.objects.get(user_id = instance)
+		endereco.estado = validated_data['estado']
+		endereco.cidade = validated_data['cidade']
+		endereco.numero = validated_data['numero']
+		endereco.rua = validated_data['rua']
+		endereco.bairro = validated_data['bairro']
+		endereco.complemento = validated_data['complemento']
+		endereco.cap = validated_data['cep']
+		endereco.save()
+
+		return endereco
 
 
 class DocumentoSerializer(serializers.ModelSerializer):
@@ -39,11 +59,10 @@ class DocumentoSerializer(serializers.ModelSerializer):
 		)
 
 
-
 class UserSerializer(serializers.ModelSerializer):
 	endereco = EnderecoSerializer()
 	contato = ContatoSerializer()
-	documento = DocumentoSerializer()
+	#documento = DocumentoSerializer(many=True)
 
 	class Meta:
 		model = get_user_model()
@@ -62,32 +81,42 @@ class UserSerializer(serializers.ModelSerializer):
 			'nomePai',
 			'naturalidade',
 			'cargo',
-			'foto',
+			#'foto',
 			'endereco',
 			'contato',
-			'documento',
+			#'documento',
 		)
 
 
 	def create(self, validated_data):
 		endereco_data = validated_data.pop('endereco')
 		contato_data = validated_data.pop('contato')
-		documentos_data = validated_data.pop('documento')
+
+		"""get document uploaded by user"""
+		#documentos_data = validated_data.pop('documento')
 
 		user = get_user_model().objects.create_user(**validated_data)
-		Endereco.objects.create(user=user, **endereco_data)
-		Contato.objects.create(user=user, **contato_data)
 
-		Documento.objects.create(user=user, **documentos_data)
+		if user is not None:
+			endereco = Endereco.objects.create(user=user, **endereco_data)
+			contato = Contato.objects.create(user=user, **contato_data)
+			#Documento.objects.create(user=user, **documentos_data)
 
 		"""for documento_data in documentos_data:
-			Documento.objects.create(user=user, **documento_data)"""
+				Documento.objects.create(user=user, **documento_data)"""
 
 		return user
 
 
 	def update(self, instance, validated_data):
+
+		ContatoSerializer.update(self, instance, validated_data['contato'])
+		EnderecoSerializer.update(self, instance, validated_data['endereco'])
+
 		password = validated_data.pop('password', None)
+		contato = validated_data.pop('contato', None)
+		endereco = validated_data.pop('endereco', None)
+
 		user = super().update(instance, validated_data)
 
 		if password:

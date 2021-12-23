@@ -40,7 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	nomePai = models.CharField('Nome do Pai', max_length=100)
 	naturalidade = models.CharField('Naturalidade', max_length=100)
 	cargo = models.CharField('Cargo', max_length=100)
-	foto = models.ImageField(upload_to='user_foto', max_length=100)
+	#foto = models.ImageField(upload_to='user_foto', max_length=100)
 	is_active = models.BooleanField(default= True)
 	is_staff = models.BooleanField(default=False)
 
