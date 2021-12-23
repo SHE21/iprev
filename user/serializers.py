@@ -62,7 +62,7 @@ class DocumentoSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
 	endereco = EnderecoSerializer()
 	contato = ContatoSerializer()
-	#documento = DocumentoSerializer(many=True)
+	documento = DocumentoSerializer(many=True)
 
 	class Meta:
 		model = get_user_model()
@@ -84,7 +84,7 @@ class UserSerializer(serializers.ModelSerializer):
 			#'foto',
 			'endereco',
 			'contato',
-			#'documento',
+			'documento',
 		)
 
 
@@ -102,8 +102,8 @@ class UserSerializer(serializers.ModelSerializer):
 			contato = Contato.objects.create(user=user, **contato_data)
 			#Documento.objects.create(user=user, **documentos_data)
 
-		"""for documento_data in documentos_data:
-				Documento.objects.create(user=user, **documento_data)"""
+			for documento_data in documentos_data:
+				Documento.objects.create(user=user, **documento_data)
 
 		return user
 
@@ -112,6 +112,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 		ContatoSerializer.update(self, instance, validated_data['contato'])
 		EnderecoSerializer.update(self, instance, validated_data['endereco'])
+		#DocumentoSerializer
 
 		password = validated_data.pop('password', None)
 		contato = validated_data.pop('contato', None)

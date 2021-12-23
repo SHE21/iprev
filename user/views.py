@@ -5,6 +5,7 @@ from rest_framework.parsers import FormParser, MultiPartParser
 
 
 from .serializers import UserSerializer, AuthTokenSerializer
+from .models import User
 
 
 class CreateUserView(generics.CreateAPIView):

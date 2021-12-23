@@ -18,6 +18,7 @@ class DocumentoSolicitacaoSerializer(serializers.ModelSerializer):
 
 class SolicitacaoSerializer(serializers.ModelSerializer):
 	documento = DocumentoSolicitacaoSerializer(many=True)
+	#documento = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
 	class Meta:
 		model = Solicitacao

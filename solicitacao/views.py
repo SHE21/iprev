@@ -17,8 +17,6 @@ class CreateSolicitacao(viewsets.GenericViewSet,
 	permissions_classes = (IsAuthenticated,)
 	queryset = Solicitacao.objects.all()
 	serializer_class = SolicitacaoSerializer
-	media_type = 'application/x-www-form-urlencoded'
-	#parser_classes = [FileUploadParser]
 
 
 	def get_queryset(self):
@@ -26,14 +24,8 @@ class CreateSolicitacao(viewsets.GenericViewSet,
 
 
 	def perform_create(self, serializer):
-		documento = self.request.documento
-		#print(documento.nome)
-		##DocumentoSolicitacao.objects.create(solicitacao=,**documento)
 		serializer.save(user=self.request.user)
 
-	"""def create(self, validated_data):
-		solicitacao = Solicitacao.objects.create(user=self.request.user, **validated_data)
-		return solicitacao"""
 
 
 class ManagerSolicitacao(viewsets.ViewSet):
