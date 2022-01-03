@@ -81,7 +81,7 @@ class UserSerializer(serializers.ModelSerializer):
 			'nomePai',
 			'naturalidade',
 			'cargo',
-			#'foto',
+			'foto',
 			'endereco',
 			'contato',
 			'documento',

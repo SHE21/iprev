@@ -1,7 +1,18 @@
+
+import uuid
+import os
+
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
 										PermissionsMixin
+
+def image_file_path(instance, filename):
+	ext = filename.split('.')[-1]
+	filename = f'{uuid.uuid4()}.{ext}'
+
+	return os.path.join('uploads/user_foto')
+
 
 class UserManager(BaseUserManager):
 
@@ -40,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	nomePai = models.CharField('Nome do Pai', max_length=100)
 	naturalidade = models.CharField('Naturalidade', max_length=100)
 	cargo = models.CharField('Cargo', max_length=100)
-	#foto = models.ImageField(upload_to='user_foto', max_length=100)
+	foto = models.ImageField(null=True, upload_to=image_file_path)
 	is_active = models.BooleanField(default= True)
 	is_staff = models.BooleanField(default=False)
 

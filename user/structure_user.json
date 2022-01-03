@@ -10,10 +10,11 @@
     "dataNascimento": "2021-12-15",
     "eleitorNumero": "4375385",
     "nomeMae": "Maria Sousa",
-    "nomePai": "Romário de Jesus",
+    "nomePai": "Romário de Jecadela quano osus",
     "naturalidade": "São Luis",
     "cargo": "Técnico em Radiologia",
     "foto": "file://D:/UNDB/SOFTHOUSE/MODULOS.png",
+
     "endereco": {
         "estado": "Maranhão",
         "cidade": "São José de Ribamar",
@@ -23,10 +24,12 @@
         "complemento": "proximo ao posto maracajá",
         "cep": "65110000"
     },
+
      "contato": {
         "telefone": "98985232177",
         "celular": "98985232177"
     },
+    
     "documento": [
         {"upload": "file://C:/Users/SANTIAGO/Documents/Relatorio.pdf", "nome": "carteira_de_trabalho","tipo": "Carteira de Trabalho"},
         {"upload": "file://C:/Users/SANTIAGO/Documents/Relatorio.pdf", "nome": "carteira_de_trabalho","tipo": "Carteira de Trabalho"}
